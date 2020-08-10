@@ -1,0 +1,40 @@
+<p-accordion [multiple]='true' expandIcon='fas fa-angle-right' collapseIcon='fas fa-angle-down'
+  (onClose)="onOpenClose('close', conditionBuildForm)" (onOpen)="onOpenClose('open')">
+  <p-accordionTab selected='true' [formGroup]='conditionBuildForm'>
+    <p-header>
+      <div class="group-container">
+        <div>
+          <p-selectButton [options]="operatorList" formControlName="conditionOperator"
+            (click)="changeCond();$event.stopPropagation()"></p-selectButton>
+        </div>
+        <div class='group-container--expressCond'><span *ngIf='showPreviewExp'>{{condition}}</span></div>
+        <div>
+          <button pButton type="button" label="Add condition" class="ui-button-secondary p-button-text"
+            (click)="addCondition();$event.stopPropagation()"></button>
+          <button pButton type="button" label="Add group" class="ui-button-secondary p-button-text"
+            (click)="addGroup();$event.stopPropagation()"></button>
+          <button pButton type="button" label="Delete" class="ui-button-secondary p-button-text"
+            (click)="removeForm(formIndex);$event.stopPropagation()"></button>
+        </div>
+      </div>
+    </p-header>
+    <div formArrayName='rules'>
+      <ng-container *ngFor="let item of rulesArray; let i =index">
+        <div class='condition-commonCls condition-builder--compForm' *ngIf='item?.value?.type == "condition" '>
+          <app-condition-builder-form (updateConditionRow)='updateConditionRow($event)' [arrayIndex]='i'
+            [form]="conditionBuildForm.controls.rules.controls[i]"></app-condition-builder-form>
+        </div>
+        <div class='condition-commonCls condition-builder--compCond' *ngIf='item?.value?.type == "group"'>
+          <app-condition-builder [conditionBuildForm]="conditionBuildForm.controls.rules.controls[i]" [formIndex]='i'>
+          </app-condition-builder>
+        </div>
+      </ng-container>
+    </div>
+  </p-accordionTab>
+</p-accordion>
+
+<!-- <div *ngIf="parentFlag">
+  <pre>
+    {{conditionBuildForm?.value | json}}
+  </pre>
+</div> -->

@@ -1,0 +1,14 @@
+<div class='conditional-comp--row'>
+  <!-- <label for='conditionType'>Type</label>
+  <p-dropdown [formControl]="control"
+   styleClass='conditional-comp--type' [options]="[{ label: 'Status dependencies', value: 'Status dependencies' },
+{ label: 'Exit code dependencies', value: 'Exit code dependencies' }]" inputId='conditionType'
+    dropdownIcon='fas fa-caret-down' name='conditionType' (onChange)='handleStatusChange($event, form)'>
+  </p-dropdown> -->
+
+  <label [for]='data?.htmlFor+arrIndex'>{{data.displayLabelName}}</label>
+  <p-dropdown [formControl]="control" (onChange)="handleStatusChange($event,data)" [options]='data?.optionList'
+    [styleClass]='data?.styleClass' [inputId]='data?.inputId+arrIndex' [dropdownIcon]='data?.dropdownIcon'
+    [name]='data?.name' [disabled]='checkdisableStatus(data, form)'></p-dropdown>
+
+</div>

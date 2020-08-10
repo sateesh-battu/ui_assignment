@@ -1,0 +1,168 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+body .condition-builder {
+    &--wrapper {
+        padding-top: 57px;
+        h1 {
+            margin-bottom: 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333840;
+        }
+    }
+    &--header {
+        @extend .flex-container;
+        padding: 20px 0;
+        line-height: 42px;
+        border-bottom: 1px solid #DDE3ED;
+        align-items: center;
+        margin: 0 20px;
+        button {
+            border: 1px solid #C8D1E0;
+            background: #fff;
+            color: #3272D9;
+            padding: 4px 2px;
+        }
+    }
+    &--body {
+        border: 1px solid #DDE3ED;
+        border-radius: 4px;
+        min-height: 280px;
+        padding: 34px 20px;
+        margin: 16px 20px 26px;
+        height: auto;
+    }
+    &--fieldRows {
+        @extend .flex-container;
+        align-items: flex-end;  
+        margin-top: 22px;
+        margin-bottom: 8px;
+    }
+    &--footer {
+        background-color: #F5F7FA;
+        border: 1px solid #DDDDDD;
+        text-align: right;
+        padding: 10px 20px;
+        height: 60px;
+        button.ui-button {
+            border: 1px solid #C8D1E0;
+            background-color: #fff;
+            color: #3272D9;
+            padding: 4px 2px;
+            margin-right: 0;
+            &:first-child {
+                margin-right: 10px;
+            }
+            &:disabled {
+                background-color: #EBEFF5;
+                color: #AFBACC;
+            }
+        }
+        button.saveBtn {
+            color: #fff;
+            background-color: #3272D9;
+        }
+    }
+    &--copyrights {
+        @extend .flex-container;
+        padding: 7px 20px;
+        border: 1px solid #DDDDDD;
+        font-size: 14px;
+        color: #58606E;
+        p {
+            color: #58606E;
+            display: inline-block;
+        }
+        ul {
+            li {
+                display: inline-block;
+                padding: 0 5px;
+                &:first-child {
+                    border-right: 1px solid #58606E;
+                }
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+    label {
+        font-size: 14px;
+        line-height: 16px;
+        color: #58606E;
+        display: block;
+        font-weight: 400;
+        margin-bottom: 8px;
+        sup {
+            color: #DE1B1B;
+            font-weight: bold;
+        }
+    }
+    input::placeholder {
+        color: #8E99AB;
+    }
+    .ui-inputtext:enabled:hover:not(.ui-state-error) {
+        border-color: #C8D1E0;
+    }
+    input.ui-inputtext {
+        border: 1px solid #C8D1E0;
+        border-radius: 4px;
+        height: 40px;
+        width: 40%;
+        margin-top: 0;
+        padding-left: 1em;
+    }
+    .ui-messages.ui-messages-success {
+        color: #2A854E;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        width: 86%;
+        position: absolute;
+        top: 20%;
+        left: 6%;
+        background: #EBFAD3;
+        padding: 20px 35px;
+        .ui-messages-icon {
+            color: #212121;
+            height: 32px;
+            width: 32px;
+            background: #2A854E;
+            border-radius: 50%;
+            color: #fff;
+            padding-top: 2px;
+            padding-left: 2px;
+        }
+        .ui-messages-close {
+            color: #6f6c6c;
+            width: 20px;
+            right: 29px;
+            top: 13px;
+            font-weight: normal;
+        }
+    }
+    .ui-button.ui-state-default:enabled:focus {
+        box-shadow: none;
+    }
+    textarea.ui-inputtext {
+        width: 100%;
+        border: 1px solid #C8D1E0;
+        border-radius: 3px;
+        padding-left: 1em;
+        color: #333840;
+        &::placeholder {
+            color: #8E99AB;
+            font-style: italic;
+        }
+        &:read-only {
+            background-color: #EBEFF5;
+            // color: #8E99AB;
+            font-size: 14px;
+        }
+    }
+}

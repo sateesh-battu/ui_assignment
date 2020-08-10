@@ -1,0 +1,290 @@
+.commonStyleForLabel {
+    color: #58606E;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 16px;
+    display: block;
+    margin-bottom: 8px;
+}
+body {
+    .ui-accordion {
+        .ui-accordion-content-wrapper {
+            .ui-accordion-content {
+                border: none !important;
+                background-color: #fff;
+                padding-top: 0;
+                padding-right: 10px;
+            }
+        }
+        .ui-accordion-header {
+            margin-bottom: 0;
+            a {
+                border: none !important;
+                padding: 0;
+                background-color: #fff;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+            &:not(.ui-state-disabled).ui-state-active {
+            a,
+            &:hover a {
+                border: 1px solid #C8D1E0;
+                background-color: #fff;
+                color: #fff;
+            }
+          }
+          &:not(.ui-state-active):not(.ui-state-disabled):hover a,
+          &:not(.ui-state-disabled):hover a {
+              background-color: #fff;
+          }
+          .ui-accordion-toggle-icon {
+                color: #58606E !important;
+                font-size: 20px;
+                position: absolute;
+                left: 4px;
+                top: 8px;
+          } 
+        }
+        button {
+            border: 1px solid #C8D1E0;
+            background-color: #fff;
+            color: #3272D9;
+            padding: 4px 2px;
+        }
+        span.ui-dropdown-trigger-icon.ui-clickable.fa.fa-caret-down {
+            color: #3272D9;
+            font-size: 20px;
+        }
+        .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
+        .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight {
+            background-color: #EBEFF5;
+            font-weight: bold;
+        }
+        span.ui-spinner.ui-widget.ui-corner-all {
+            margin-right: 20px;
+            width: 21%;
+        }
+        input.conditional-comp--lookBackHours, input.conditional-comp--lookBackMints {
+            width: 100%;
+            display: inline-block;
+            min-width: 2em !important;
+        }
+        .ui-dropdown .ui-dropdown-trigger .ui-dropdown-trigger-icon {
+            color: #3272D9;
+        }
+    }
+    
+    .group-container {
+        display: flex;
+        align-items: center;
+        &--expressCond {
+            color: #333840;
+            font-weight: 400;
+            word-break: break-word;
+            flex: 1;
+        }
+        &> div:first-child {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        button.ui-button.ui-state-default.ui-button-secondary {
+            &:enabled:hover {
+                color: #3272D9;
+            }
+            color: #3272D9;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid #C8D1E0;
+            background-color: #fff;
+            padding: 0px 3px;
+            margin-right: 10px;
+            &:last-child {
+                border: none;
+                margin-right: 0;
+            }
+            &:focus,
+            &:hover {
+                background-color: #fff;
+            }
+        }
+        
+        .ui-selectbutton .ui-button:not(.ui-state-active) {
+            background-color: #fff;
+            font-size: 14px;
+            border-color: #C8D1E0;
+            color: #3272D9;
+            &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+    .conditional-comp {
+        &--wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            // margin-bottom: 1rem;
+            .conditional-comp--innerClass {
+                flex-grow: 2;
+                > div {
+                    display: flex;
+                    flex: 1;
+                }
+            }
+            
+        }
+        display: flex;
+        align-items: flex-end;
+        border: 1px solid #C8D1E0;
+        border-radius: 3px;
+        & > div:first-child {
+            display: flex;
+            flex-wrap: wrap;
+            flex-grow: 3;
+        }
+        &--row {
+            margin-right: 16px;
+            &:nth-child(1) {
+                flex-basis: 23%;
+            }
+            &:nth-child(2) {
+                flex-basis: 17%;
+            }
+            &:nth-child(3) {
+                flex-basis: 11%;
+            }
+            &:nth-child(4) {
+                flex-basis: 39%;
+                input.ui-inputtext {
+                    width: 100%;
+                    margin-top: 0px;
+                    border-width: 0 0px 1px 0;
+                }
+            }
+            label {
+                @extend .commonStyleForLabel;
+            }
+            li {
+                font-size: 14px !important;
+                color: #333840 !important;
+            }
+        }
+        &--optionalRow {
+            flex-basis: 4%;
+        }
+        &--optionalvalue{
+            min-width: 3.5em;
+        }
+        &--lookBack,
+        &--optionalRow {
+            margin-right: 16px;
+            margin-top: 8px;
+            label {
+                @extend .commonStyleForLabel;
+            }
+        }
+        &--addRemoveCont {
+            display: flex;
+            & > span {
+                height: 40px;
+                width: 40px;
+                border: 1px solid #C8D1E0;
+                border-radius: 3px;
+                box-sizing: border-box;
+                text-align: center;
+                color: #3272D9;
+                line-height: 20px;
+                font-weight: 800;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 16px;
+                padding-top: 10px;
+                cursor: pointer;
+                i {
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+        }
+        &--type,
+        &--subType,
+        &--status,
+        &--operationName,
+        &--operater,
+        &--value,
+        &--lookBackHours,
+        &--lookBackMints {
+            min-width: 9em !important;
+            width: 100%;
+            border: 1px solid #C8D1E0  !important;
+            border-radius: 3px !important;
+            color: #333840;
+            font-size: 14px;
+            height: 40px;
+            box-sizing: border-box;
+        }
+        &--operater,
+        &--value {
+            min-width: 4em !important;
+        }
+        &--type,
+        &--subType,
+        &--status {
+            padding-top: 4px;
+        }
+        // &--operationName input {
+        //     // font-style: italic;
+        //     // color: #8E99AB;
+        // }
+    }
+    .condition-builder {
+        .condition-commonCls {
+            border: 1px solid #C8D1E0;
+            padding: 10px 0px 10px 10px;
+            border-radius: 3px;
+            margin-left: 30px;
+            margin-top: 10px;
+            position: relative;
+            &::after {
+                border-width: 0 0 0 1px;
+                top: 50%;
+            }
+            &::before {
+                top: -15px;
+                border-width: 0 0 1px 1px;
+            }
+            &::after,
+            &::before {
+                content: "";
+                left: -14px;
+                border-color: #CDCDCD;
+                border-style: dotted;
+                width: 13px;
+                height: calc(50% + 15px);
+                position: absolute;
+            }
+            &:last-child {
+                &::after {
+                    height: 0;
+                }
+            }
+        }
+        &--compCond {
+            margin-top: 14px;
+        }
+    }
+     
+    .ui-dropdown {
+        .ui-dropdown-label-container {
+            display: flex;
+            .ui-dropdown-label {
+                padding-top: 0.3em;
+            }
+        }
+    }
+    .ui-tooltip .ui-tooltip-text {
+        padding: 15px;
+    }
+}

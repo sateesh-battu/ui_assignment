@@ -1,0 +1,48 @@
+<section class='condition-builder'>
+    <div class='condition-builder--wrapper'>
+        <header>
+            <div class="condition-builder--header">
+                <h1>Create new container</h1>
+                <button pButton type="button" label="Refresh" class="p-button-secondary p-button-text"
+                    (click)='refreshPage()'></button>
+            </div>
+        </header>
+        <p-messages [(value)]="msgs"></p-messages>
+        <form [formGroup]="myform" (ngSubmit)="onSubmit()">
+            <section>
+                <div class='condition-builder--body'>
+                    <div>
+                        <label>Operation name<sup>*</sup></label>
+                        <input type="text" placeholder="SAMPLE_Operation_type" pInputText class="p-inputtext-lg"
+                            formControlName="operationName">
+                    </div>
+                    <div>
+                        <div class='condition-builder--fieldRows'>
+                            <label>Success logical expression</label>
+                            <button pButton type="button" label="Condition builder"
+                                class="p-button-secondary p-button-text" (click)="conditionBuilderClick()"></button>
+                        </div>
+                        <textarea pInputTextarea formControlName="logicalExpression" rows="5"
+                            placeholder="success(command_operation_1) AND failure(command_operation_3)"></textarea>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="condition-builder--footer">
+                    <button pButton type="button" label="Cancel" class="p-button-secondary p-button-text"></button>
+                    <button pButton type="submit" label="Save job" class="p-button-secondary p-button-text saveBtn"
+                        [disabled]="!myform.valid"></button>
+                </div>
+                <div class='condition-builder--copyrights'>
+                    <p>&#169; 2020 CA. All rights reserved.</p>
+                    <ul>
+                        <li>About</li>
+                        <li>Help</li>
+                    </ul>
+                </div>
+            </footer>
+        </form>
+    </div>
+    <app-container-popup [displayModal]='displayModal' (handleClickEmit)='handleClickEmit($event)'>
+    </app-container-popup>
+</section>

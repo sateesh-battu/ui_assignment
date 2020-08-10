@@ -1,0 +1,58 @@
+<div [formGroup]="form" class="conditional-comp--wrapper">
+  <div class="conditional-comp--innerClass">
+    <div>
+      <ng-container *ngFor='let item of dropDownList; let i =index'>
+        <app-dropdown [form]='form' [data]='item' [arrIndex]='i'></app-dropdown>
+      </ng-container>
+
+      <div class='conditional-comp--row'>
+        <label for='operationName'>Operation name</label>
+        <p-autoComplete formControlName="operationName" styleClass='conditional-comp--operationName'
+          [suggestions]="operationName" (completeMethod)="filterOperationName($event)"
+          placeholder="Enter a search string or use dropdown" [minLength]="1" dropdownIcon='fas fa-caret-down'
+          inputId='operationName' name='operationName' (onKeyUp)='updateExpression($event, form)'
+          (onSelect)='updateExpression($event, form)'>
+        </p-autoComplete>
+      </div>
+    </div>
+    <div>
+      <ng-container *ngIf='form?.value.conditionType=="Exit code dependencies"'>
+        <div class='conditional-comp--optionalRow'>
+          <label for='operater'>Operater</label>
+          <p-dropdown formControlName="operater" styleClass='conditional-comp--operater' [options]="[{ label: '=', value: '=' },
+        { label: '!=', value: '!=' },
+        { label: '<', value: '<' },
+        { label: '>', value: '>' },
+        { label: '<=', value: '<=' },
+        { label: '>=', value: '>=' }
+        ]" inputId='operater' dropdownIcon='fas fa-caret-down' name='operater'
+            (onChange)='updateExpression($event, form)'></p-dropdown>
+        </div>
+        <div class='conditional-comp--optionalRow'>
+          <label for='value'>Value</label>
+          <input type="text" pInputText class='conditional-comp--value' name='value' formControlName="value"
+            (input)='updateExpression($event, form)'>
+        </div>
+      </ng-container>
+      <div class='conditional-comp--lookBack' *ngIf='form?.value.conditionSubType=="Look-back"'>
+        <label for='lookBack'>Look back</label>
+        <p-spinner inputStyleClass='conditional-comp--lookBackHours' formControlName="lookBackHours" [min]="0"
+          [max]="9999" (onChange)='updateExpression($event, form)'></p-spinner>
+        <p-spinner inputStyleClass='conditional-comp--lookBackMints' formControlName="lookBackMints" [min]="0"
+          [max]="59" (onChange)='updateExpression($event, form)'>
+        </p-spinner>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class='conditional-comp--addRemoveCont'>
+      <span (click)='addRemoveRow("remove", form, arrayIndex)' tooltipPosition="top" pInputText
+        pTooltip="Remove Condition" tooltipZIndex='999999'><span class="fas fa-trash" aria-hidden="true"></span></span>
+      <span (click)='addRemoveRow("add",form,arrayIndex)' tooltipPosition="top" pInputText pTooltip="Add Condition"
+        tooltipZIndex='999999'><span class="fa-plus fa" aria-hidden="true"></span></span>
+    </div>
+  </div>
+</div>
+<ng-container *ngFor="let childNode of childNodeControls; let i = index">
+  <app-condition-builder-form [form]="childNode"></app-condition-builder-form>
+</ng-container>

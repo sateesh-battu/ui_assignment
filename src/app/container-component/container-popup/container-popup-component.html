@@ -1,0 +1,30 @@
+<p-dialog header="Condition builder for success" [(visible)]="displayModal" [modal]="true" [style]="{width: '90vw'}"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false" styleClass='condition-builder--popUp'
+    (onShow)="onShow()" (visibleChange)="handleClick('closeIcon')" closeIcon='fas fa-times'>
+    <div>
+        <div>
+            <div class='condition-builder--fieldRows'>
+                <label>logical expression for Success</label>
+            </div>
+            <textarea pInputTextarea [(ngModel)]='finalCondition' rows='5' readonly='true'
+                placeholder="Logical expression will be auto generated based on the applied conditions using condition builder"></textarea>
+        </div>
+        <div>
+            <div class='condition-builder--fieldRows successLabel'>
+                <label>Condition builder for Success</label>
+            </div>
+            <div class="condition-builder--container">
+                <app-condition-builder [conditionBuildForm]='conditionBuildForm'
+                    (updateExpressionEmit)='updateExpressionEmit($event)'></app-condition-builder>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class='condition-builder--footer'>
+            <button type="button" pButton label="Cancel" (click)="handleClick('cancel')"
+                class="p-button-secondary p-button-text"></button>
+            <button type="button" pButton label="Save" (click)="handleClick('save')"
+                class="p-button-secondary p-button-text" [disabled]="!finalCondition"></button>
+        </div>
+    </p-footer>
+</p-dialog>
