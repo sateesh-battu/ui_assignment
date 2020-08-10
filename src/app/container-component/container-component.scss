@@ -108,6 +108,10 @@ body .condition-builder {
     .ui-inputtext:enabled:hover:not(.ui-state-error) {
         border-color: #C8D1E0;
     }
+    .ui-inputtext.ng-dirty.ng-invalid,
+    .ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext {
+        border: 1px solid #C8D1E0;
+    }
     input.ui-inputtext {
         border: 1px solid #C8D1E0;
         border-radius: 4px;
@@ -164,5 +168,8 @@ body .condition-builder {
             // color: #8E99AB;
             font-size: 14px;
         }
+    }
+    .errorMsg {
+        color: #DE1B1B;
     }
 }

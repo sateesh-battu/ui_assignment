@@ -95,11 +95,12 @@ export class ConditionBuilderComponent implements OnInit {
       conditionType: new FormControl('Status dependencies'),
       conditionSubType: new FormControl('None'),
       conditionStatus: new FormControl('done'),
-      operationName: new FormControl('sample_operA', Validators.required),
-      lookBackHours: new FormControl('01', [Validators.minLength(1), Validators.maxLength(9999)]),
-      lookBackMints: new FormControl('00', [Validators.minLength(1), Validators.maxLength(59)]),
+      operationName: new FormControl('sample_operA',  [Validators.required, Validators.minLength(2), 
+        Validators.maxLength(5)]),
+      lookBackHours: new FormControl('01', [Validators.required, Validators.minLength(1), Validators.maxLength(9999)]),
+      lookBackMints: new FormControl('01', [Validators.required, Validators.minLength(1), Validators.maxLength(59)]),
       operater: new FormControl('<=', Validators.required),
-      value: new FormControl('0', [Validators.minLength(1), Validators.maxLength(1000)]),
+      value: new FormControl('0', [Validators.required, Validators.minLength(1), Validators.maxLength(1000)]),
       type: new FormControl('condition')
     });
     return queryForm;

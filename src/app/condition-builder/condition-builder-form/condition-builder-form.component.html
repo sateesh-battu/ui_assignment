@@ -13,6 +13,9 @@
           inputId='operationName' name='operationName' (onKeyUp)='updateExpression($event, form)'
           (onSelect)='updateExpression($event, form)'>
         </p-autoComplete>
+        <div class='errorMsg' *ngIf="form.controls['operationName'].hasError('required')">
+          Operation name is required
+        </div>
       </div>
     </div>
     <div>
@@ -32,15 +35,29 @@
           <label for='value'>Value</label>
           <input type="text" pInputText class='conditional-comp--value' name='value' formControlName="value"
             (input)='updateExpression($event, form)'>
+            <div class='errorMsg' *ngIf="form.controls['value'].hasError('required')">
+              Value is required.
+            </div>
         </div>
       </ng-container>
       <div class='conditional-comp--lookBack' *ngIf='form?.value.conditionSubType=="Look-back"'>
         <label for='lookBack'>Look back</label>
-        <p-spinner inputStyleClass='conditional-comp--lookBackHours' formControlName="lookBackHours" [min]="0"
-          [max]="9999" (onChange)='updateExpression($event, form)'></p-spinner>
-        <p-spinner inputStyleClass='conditional-comp--lookBackMints' formControlName="lookBackMints" [min]="0"
-          [max]="59" (onChange)='updateExpression($event, form)'>
-        </p-spinner>
+        <div>
+          <p-spinner inputStyleClass='conditional-comp--lookBackHours' formControlName="lookBackHours" [min]="1" [max]="9999"
+            (onChange)='updateExpression($event, form)'></p-spinner>
+          <p-spinner inputStyleClass='conditional-comp--lookBackMints' formControlName="lookBackMints" [min]="1" [max]="59"
+             (onChange)='updateExpression($event, form)'>
+          </p-spinner>
+        </div>
+        <div>
+          <div class='errorMsg' *ngIf="form.controls['lookBackHours'].hasError('required')">
+            Look Back Hour is required, value range should be 1 to 9999.
+          </div>
+          <div class='errorMsg' *ngIf="form.controls['lookBackMints'].hasError('required')">
+            Look Back Minitue name is required, value range should be 1 to 50.
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
